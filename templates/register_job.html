@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <style>
+        .input-with-x {
+            position: relative;
+        }
+    
+        .input-with-x input {
+            padding-right: 25px; /* Add space for the "X" button */
+        }
+    
+        .input-with-x .remove-button {
+            position: absolute;
+            right: 5px; /* Adjust the button's position as needed */
+            top: 5px; /* Adjust the button's position as needed */
+            cursor: pointer;
+            color: red;
+        }
+    
+        .input-with-check {
+            position: relative;
+        }
+    
+        .input-with-check input {
+            padding-right: 25px; /* Add space for the checkmark */
+        }
+    
+        .input-with-check .checkmark {
+            position: absolute;
+            left: 5px; /* Adjust the checkmark's position as needed */
+            top: 5px; /* Adjust the checkmark's position as needed */
+            color: green;
+            visibility: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="../static/login/assets/css/style.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+   <title>Fayiduh Signup </title>
+</head>
+<body>
+    <div class="container">
+        <header>انشاء حساب شركة</header>
+        <form action="/addjob" method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">تفاصيل</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>اسم الوظيفة</label>
+                            <input placeholder="اسم الوظيفة" name="title" type="text">
+                        </div>
+                        <div class="input-field">
+                            <label>المدينة</label>
+                            <input placeholder="مكان العمل" name="town" type="text">
+                        </div>
+                        <div class="input-field">
+                            <label>الوصف</label>
+                            <textarea type="text" name="job_description" placeholder="وصف الوظيفة" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="input-field">
+                            <label>نوع الوظيفة</label>
+                            <select name="job_type" id="">
+                                <option value="full_time">دوام كامل</option>
+                                <option value="part_time">دوام جزئي</option>
+                                <option value="freelancer">فريلانسر</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            <label>المهام - مهمة الموظف-</label>
+                            <input type="text" placeholder="مهمة الموظف" name="mission">
+                        </div>
+                        <div class="input-field">
+                            <label>الراتب</label>
+                            <input type="text" placeholder="الراتب" name="salary">
+                        </div>
+                        <div class="input-field">
+                            <label>ايميل التواصل</label>
+                            <input type="text" placeholder="ادخل ايميل التواصل مع الشركة" name="contact_email">
+                        </div>
+                        <div class="input-field">
+                            <label>المتطلبات</label>
+                            <input type="text" placeholder="متطلبات الوظيفة" name="requirements">
+                        </div>
+
+                        <div class="input-field">
+                            <label>تاريخ انتهاء التقديم</label>
+                            <input type="date" placeholder="تاريخ انتهاء التقديم" name="expiration_date">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Keywords</label>
+                            <input type="text" placeholder="Keywords" name="keywords">
+                        </div>
+                        <div class="input-field">
+                            <label>Company Size</label>
+                            <input type="text" placeholder="Company Size" name="company_size">
+                        </div>
+                     
+                        
+                        <div class="input-field">
+                            <label>المهارات</label>
+                            <div id="skills-container">
+                                <select id="skill-select" name="skills[]">
+                                    <option value="" disabled selected>اختر مهارة</option>
+                                    <!-- Include options for existing skills from your database here -->
+                                    {% for skill in skills %}
+                                    <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+                                    {% endfor %}
+                                    <option value="add_new_skill">إضافة مهارة جديدة</option>
+                                </select>
+                                <!-- Display selected skills here -->
+                                <div id="selected-skills"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="submit" type="submit">
+                    <span class="btnText">يُقدِّم</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const skillSelect = document.getElementById('skill-select');
+            const selectedSkillsContainer = document.getElementById('selected-skills');
+    
+            skillSelect.addEventListener('change', function () {
+                const selectedOption = skillSelect.options[skillSelect.selectedIndex];
+                const selectedSkillValue = selectedOption.value;
+    
+                if (selectedSkillValue === "add_new_skill") {
+                    // Create a new input field for adding a skill
+                    const newSkillInput = document.createElement('div');
+                    newSkillInput.classList.add('input-with-x');
+    
+                    // Create an input field for the skill
+                    const skillInput = document.createElement('input');
+                    skillInput.type = 'text';
+                    skillInput.placeholder = 'أدخل مهارة واحدة';
+                    skillInput.name = 'skills[]';
+    
+                    // Create an "X" button to remove the input
+                    const removeButton = document.createElement('div');
+                    removeButton.classList.add('remove-button');
+                    removeButton.textContent = 'X';
+                    removeButton.addEventListener('click', function () {
+                        selectedSkillsContainer.removeChild(newSkillInput);
+                    });
+    
+                    newSkillInput.appendChild(skillInput);
+                    newSkillInput.appendChild(removeButton);
+                    selectedSkillsContainer.appendChild(newSkillInput);
+    
+                    // Reset the select element to the default option
+                    skillSelect.selectedIndex = 0;
+                } else {
+                    // Create an input field for the selected skill
+                    const selectedSkillInput = document.createElement('input');
+                    selectedSkillInput.type = 'text';
+                    selectedSkillInput.value = selectedSkillValue;
+                    selectedSkillInput.readOnly = true; // Disable editing
+                    selectedSkillsContainer.appendChild(selectedSkillInput);
+    
+                    // Reset the select element to the default option
+                    skillSelect.selectedIndex = 0;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

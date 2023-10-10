@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Filter</title>
+</head>
+<body>
+    <h1>Customer Filter</h1>
+    
+    <form action="/all_applicants" method="POST">
+        <label for="filter_by">Filter by:</label>
+        <select name="filter_by" id="filter_by">
+            <option value="">All</option>
+            <option value="country">Country</option>
+            <option value="name">Name</option>
+        </select>
+        <input type="text" name="search_term" placeholder="Enter search term">
+        <input type="submit" value="Filter">
+    </form>
+    
+    <h2>Filtered Customers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Country</th>
+                <!-- Add other columns here -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.fullname }}</td>
+                    <td>{{ customer.country }}</td>
+                    <!-- Add other columns here -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

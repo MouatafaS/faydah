@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Company Profile</title>
+    <style>
+        /* Additional CSS specific to this page can be placed here */
+        /* Customize fonts, colors, and layout as needed */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .company-logo {
+            max-width: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .company-info {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .job-count {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .website-link {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .website-link:hover {
+            background-color: #0056b3;
+        }
+
+        .jobs-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .job-card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .job-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .job-card p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='uploads/company/logo/' + company.Company_Logo) }}"alt="{{ company.company_name }} Logo" class="company-logo">
+        <h1 class="company-name">{{ company.company_name }}</h1>
+        <p class="company-info">{{ company.Industry_or_Sector }} | {{ company.Company_Size }}</p>
+        <p class="job-count">{{ company.number_of_jobs_offered }} Jobs Offered</p>
+        <p class="description">{{ company.Company_Description }}</p>
+        <a href="{{ company.Website_URL }}" class="website-link" target="_blank">Visit Website</a>
+        
+        <!-- Jobs Section -->
+        <div class="jobs-section">
+            <h2>Jobs Offered by {{ company.company_name }}</h2>
+            {% for job in jobs %}
+                <div class="job-card">
+                    <form action="/apply/{{ job.id }}" method="POST">
+                        <button type="submit">apply now</button>                    </form>
+                    <h3>{{ job.title }}</h3>
+                    <p>{{ job.town }}</p>
+                    <p>{{ job.discription }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

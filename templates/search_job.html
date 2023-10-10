@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Search</title>
+    <style>
+        /* CSS for the suggestion table */
+        .suggestion-table {
+            border-collapse: collapse;
+            width: 100%;
+            max-height: 200px; /* Set a max height to limit the suggestions */
+            overflow-y: auto; /* Add a scrollbar for overflow */
+        }
+
+        .suggestion-table th,
+        .suggestion-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .suggestion-table tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>job Search</h1>
+    <form action="/searchjobb/" method="GET">
+        <input type="text" id="searchjob" name="query" placeholder="Search">
+        <select id="filter" name="filter">
+            <option value="title" selected>title</option>
+            <option value="town">town</option>
+            <option value="discription">discription</option>
+        </select>
+    </form>
+    <div id="suggestions"></div>
+
+    <!-- Hidden form for job applications -->
+    <form id="apply-form" method="POST" action="">
+        <input type="hidden" id="job-id" name="job_id" value="">
+    </form>
+
+    <!-- Updated JavaScript code -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Function to update job suggestions based on user input
+            function updateJobSuggestions() {
+                var query = $('#searchjob').val();
+                var filter = $('#filter').val();
+
+                if (query === '') {
+                    $('#suggestions').empty();
+                    return;
+                }
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/searchjobb',
+                    data: { 'query': query, 'filter': filter },
+                    success: function(data) {
+                        $('#suggestions').empty();
+                        var suggestionTable = $('<table class="suggestion-table"></table>');
+                        var tableHeader = '<tr><th>Title</th><th>Town</th><th>discription</th><th>Apply now</th></tr>';
+                        suggestionTable.append(tableHeader);
+
+                        data.forEach(function(job) {
+                            var tableRow = '<tr>';
+                            tableRow += '<td>' + job.title + '</td>';
+                            tableRow += '<td>' + job.town + '</td>';
+                            tableRow += '<td>' + job.discription + '</td>';
+                            tableRow += '<td><a href="#" class="apply-link" data-job-id="' + job.id + '">Apply now</a></td>';
+                            tableRow += '</tr>';
+                            suggestionTable.append(tableRow);
+                        });
+
+                        $('#suggestions').append(suggestionTable);
+                    }
+                });
+            }
+
+            // Handle keyup event on the search input
+            $('#searchjob').keyup(updateJobSuggestions);
+
+            // Attach a click event handler to the "Apply now" links
+            $(document).on('click', '.apply-link', function(e) {
+                e.preventDefault();
+                var job_id = $(this).data('job-id');
+                $('#job-id').val(job_id);
+                $('#apply-form').attr('action', '/applyjob/' + job_id).submit();
+            });
+        });
+    </script>
+</body>
+</html>

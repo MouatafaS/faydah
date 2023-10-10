@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" theme="air-2-76" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en-us%22%7D,%22theme%22:%7B%22ssr%22:%22air-2-76%22%7D%7D">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fayiduh Signup</title>
+    <link rel="stylesheet" href="../static/login/assets/css/options.css">
+</head>
+
+<body>
+    <main id="main" tabindex="-1" style="margin: auto;">
+        <div data-v-0bd4803d>
+            <div class="container" data-v-0bd4803d>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+                        <div class="up-card my-0 my-sm-30">
+                            <div class="text-center">
+                                <h2 class="display-rebrand mt-20 pb-5">
+                                    انضم كفرد أو مؤسسة
+                                </h2>
+                                <div class="up-button-box-radio-group pb-10">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-12 col-md-5 mt-10 col-md-offset-1">
+                                                <div data-cy="button-box" class="up-button-box up-button-box-radio">
+                                                    <div class="up-radio"><label class="up-checkbox-label"><input
+                                                                type="radio" aria-labelledby="button-box-null"
+                                                                name="check-status" value="company"
+                                                                class="up-button-box-input"> <span
+                                                                class="up-checkbox-replacement-helper"></span></label></div>
+                                                    <div id="button-box-null" class="up-button-box-labels">
+                                                        <div class="up-button-box-label">
+                                                            <h4>
+                                                                أنا مؤسسة، أقوم بالتوظيف
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-5 mt-10">
+                                                <div data-cy="button-box" class="up-button-box up-button-box-radio">
+                                                    <div class="up-radio"><label class="up-checkbox-label"><input
+                                                                type="radio" aria-labelledby="button-box-null"
+                                                                name="check-status" value="customer"
+                                                                class="up-button-box-input"> <span
+                                                                class="up-checkbox-replacement-helper"></span></label></div>
+                                                    <div id="button-box-null" class="up-button-box-labels">
+                                                        <div class="up-button-box-label">
+                                                            <h4>
+                                                                أنا موظف، أبحث عن عمل
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="mt-30">
+                                    <button data-qa="btn-apply" type="button"
+                                        class="up-btn up-btn-primary width-md up-btn-block" onclick="redirectToRegistration()">
+                                        إنشاء حساب
+                                    </button>
+                                    <p class="mb-0">
+                                        هل لديك حساب؟
+                                        <a href="/login" data-qa="login" class="up-n-link">
+                                            تسجيل الدخول
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function redirectToRegistration() {
+            var selectedOption = document.querySelector('input[name="check-status"]:checked');
+            if (selectedOption) {
+                if (selectedOption.value === "company") {
+                    window.location.href = "/addcompany";
+                } else if (selectedOption.value === "customer") {
+                    window.location.href = "/register";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../static/login/assets/css/style.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+   <title>Fayiduh Signup </title>
+</head>
+<body>
+    <div class="container">
+        <header>انشاء حساب شركة</header>
+
+        <form action="/addcompany" method="post" enctype="multipart/form-data">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">تفاصيل </span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label>  لوجو الشركة (الشعار)</label>
+                            <input placeholder="upload image" name="Company_Logo"  type="file" accept="image/*" >
+                        </div>
+                        <div class="input-field">
+                            <label>بريد إلكتروني</label>
+                            <input type="text"name="login_email" placeholder="أدخل بريدك الإلكتروني" >
+                        </div>
+                        <div class="input-field">
+                            <label> كلمة المرور</label>
+                            <input type="password" placeholder="أدخل كلمة المرور" name="login_password" >
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            <label>اسم الشركة </label>
+                            <input type="text" placeholder="أدخل أسمك" name="company_name" >
+                        </div>
+
+                        <div class="input-field">
+                            <label> وصف الشركة</label>
+                            <textarea name="Company_Description"  cols="30" rows="10"></textarea>
+                        </div>
+
+
+
+                        <div class="input-field">
+                            <label> طرق التواصل</label>
+                            <input type="text" placeholder="ادخل  طرق التواصل مع الشركة " name="Contact_Information" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>  المجال والتخصص</label>
+                            <input type="text" placeholder="ادخل مجالات عمل الشركة " name="Industry_or_Sector" >
+                        </div>
+
+                        <div class="input-field">
+                            <label> موقع الشركة</label>
+                            <input type="text" placeholder="أدخل الموقع الالكتروني" name="Website_URL">
+                        </div>                        
+                        <div class="input-field">
+                            <label>حجم الشركة </label>
+                            <input type="text" placeholder="أدخل حجم الشركة(من حيث عدد الموظفين)" name="Company_Size">
+                        </div>                        
+                        <div class="input-field">
+                            <label> روابط مواقع التواصل الاجتماعي</label>
+                            <input type="text" placeholder="روابط مواقع التواصل الاجتماعي" name="Social_Media_Links">
+                        </div>                                                
+                        <div class="input-field">
+                            <label> عنوان الشركة المحلي بالتفصيل</label>
+                            <input type="text" placeholder="أدخل عنوان الشركة المحلي بالتفصيل" name="company_local_adress">
+                        </div>
+
+
+
+
+                        <div class="input-field">
+                        </div>
+                    </div>
+                </div>
+                <button class="sumbit" value="sumbit">
+                    <span class="btnText">يُقدِّم</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+            </div>
+            
+        </form>
+    </div>
+
+</body>
+</html>

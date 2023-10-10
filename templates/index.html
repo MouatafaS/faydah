@@ -1,0 +1,323 @@
+{% extends "navbar.html" %}
+{% block content %}
+        <!-- Hero -->
+        <div class="gpt3__header section__padding" id="home">
+            <div class="gpt3__header-content">
+              
+                <h1 class="gradient__text">رحلة البحث عن وظيفتك المثالية</h1>
+                {% for message in get_flashed_messages() %}
+
+<div style="background-color: rgb(5, 255, 5);" role="alert" id="flash-message">
+  {{ message|safe  }}
+</div>
+
+<script>
+  setTimeout(function() {
+    var flashMessage = document.getElementById('flash-message');
+    flashMessage.parentNode.removeChild(flashMessage);
+  }, 5000); // 5000 milliseconds = 5 seconds
+</script>
+
+{% endfor %}
+                <p>مرحبًا بك في المحور المتقدم لتوظيف الكفاءات وبناء مستقبل مهني مشرق، حيث نقدم لك منصة توظيف شاملة تهدف
+                    إلى إحداث تحول في رحلتك المهنية. نحن هنا لنساعدك في اكتشاف فرص العمل الواعدة وتطوير مهاراتك بمجموعة
+                    متنوعة من المجالات.</p>
+
+                <div class="gpt3__header-content__input">
+                    <input type="email" placeholder="عنوان بريدك  الإلكتروني" />
+                    <button type="button">ابدء الان</button>
+                </div>
+
+                <div class="gpt3__header-content__people">
+                    <img src="../static/assets/img/people.png" />
+                    <p>طلب 1600 شخص الوصول للزيارة خلال الـ 24 ساعة الماضية</p>
+                </div>
+            </div>
+
+            <div class="gpt3__header-image">
+                <img src="../static/assets/img/ai.png" />
+            </div>
+        </div>
+    </header>
+
+    <!-- Brands -->
+    <section class="brands">
+        <div class="gpt3__brand section__padding">
+            <div>
+                <img src="../static/assets/img/atlassian.png" />
+            </div>
+            <div>
+                <img src="../static/assets/img/google.png" />
+            </div>
+            <div>
+                <img src="../static/assets/img/shopify.png" />
+            </div>
+            <div>
+                <img src="../static/assets/img/slack.png" />
+            </div>
+            <div>
+                <img src="../static/assets/img/dropbox.png" />
+            </div>
+        </div>
+    </section>
+
+    <!-- GPT About -->
+    <section class="gPT">
+        <div class="gpt3__whatgpt3 section__margin" id="wgpt3">
+            <div class="gpt3__whatgpt3-feature">
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>ما هو فائدة</h1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>نحن نرى أصدقاء لي رسالة على أنها فرحة. سمعت الجزء الأمامي بالكامل من اللوحة أوه ينبغي. سكنه
+                            المعيب أو المقنع الخاص به. لقد وضع الاتصال المستحيل الشقق الخاصة الصاخبة. في السيادة
+                            المشتركة أصر على الإنسانية. مدخل البكالوريوس الودي إلى جانب</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gpt3__whatgpt3-heading">
+                <h1 class="gradient__text">الاحتمالات هي أبعد من خيالك</h1>
+                <p>اكتشف المكتبة</p>
+            </div>
+            <div class="gpt3__whatgpt3-container">
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>روبوتات الدردشة</h1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>نحن نرى أصدقاء لي رسالة على أنها فرحة. سمعت الجزء الأمامي بالكامل من اللوحة أوه ينبغي. </p>
+                    </div>
+                </div>
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>قاعدة المعرفة</h1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>في السيادة المشتركة أصر على الإنسانية. مدخل البكالوريوس الودي إلى جانب. كما وضع المستحيل
+                            الشقق الخاصة </p>
+                    </div>
+                </div>
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>تعليم</h1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>في في السيادة المشتركة أصر على الإنسانية. مدخل البكالوريوس الودي إلى جانب. كما وضع المستحيل
+                            الشقق الخاصة ب </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="gpt3__features section__padding" id="features">
+            <div class="gpt3__features-heading">
+                <h1 class="gradient__text">اطلب الوصول المبكر للبدء</h1>
+                <p>من هم بخير يوحنا يعطي من الغني. يكبرون ويرسمون السيدة مثل. قد يكون تحسين عدم الثقة في النهاية موضع
+                    استحسان الأسرة على الفور.</p>
+            </div>
+            <div class="gpt3__features-container">
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>تصبح تميل نشطة</h1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>
+                            تعتبر التعاطف مع عشرة مساعدة عرضية غير مألوفة كافية لا. خطاب على أصبح يميل إلى تمكين نشط.
+                        </p>
+                    </div>
+                </div>
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>رسالة أو أنا لا شيء</h1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>
+                            أدى اسأل ممكن أناقة العلاقة عشيقة تناول الطعام بالمثل مناقشة. عن طريق الرسالة أو لست من بين
+                            العناوين الرئيسية.
+                        </p>
+                    </div>
+                </div>
+                <div class="gpt3__features-container__feature">
+                    <div class="gpt3__features-container__feature-title">
+                        <div></div>
+                        <h1>حقا مقاطعة الصبي القانونh1>
+                    </div>
+                    <div class="gpt3__features-container_feature-text">
+                        <p>
+                            حقا مقاطعة القانون الصبي أنها غير قادرة على أختها. قدمك مثل ستة. بين الجنسين تم بناء قانون
+                            الإجازة الآن. في طاولة مبنية في احمرار سريع...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Possibility -->
+    <section class="possibility">
+        <div class="gpt3__possibility section__padding" id="possibility">
+            <div class="gpt3__possibility-image">
+              <img src="../static/assets/img/possibility.png" alt="possibility" />
+            </div>
+            <div class="gpt3__possibility-content">
+              <h4>اطلب الوصول المبكر للبدء</h4>
+              <h1 class="gradient__text">الاحتمالات هي <br /> أبعد من الخيال الخاص بك</h1>
+              <p>ومع ذلك، فإن السرير ليس من أجل المساعدة في السفر، وهو أمر مزعج. ليست الأفكار كلها ممارسة نعمة. طريقة الانغماس في كل شيء فرح تغيير صاخب في التعلق. الطرف الذي نحن سنوات من أجل السماح بطلب منه.</p>
+              <h4>اطلب الوصول المبكر للبدء</h4>
+            </div>
+          </div>        
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="gpt3__cta">
+            <div class="gpt3__cta-content">
+              <p>اطلب الوصول المبكر للبدء</p>
+              <h3>سجل اليوم وابدأ في استكشاف الاحتمالات التي لا نهاية لها.</h3>
+            </div>
+            <div class="gpt3__cta-btn">
+              <button type="button">البدء</button>
+            </div>
+          </div>        
+    </section>
+
+    <!-- Blog -->
+    <section class="blog">
+        <div class="gpt3__blog section__padding" id="blog">
+            <div class="gpt3__blog-heading">
+              <h1 class="gradient__text">هناك الكثير يحدث, <br /> نحن نقوم بالتدوين حول هذا الموضوع.</h1>
+            </div>
+            <div class="gpt3__blog-container">
+              <div class="gpt3__blog-container_groupA">
+                <div class="gpt3__blog-container_article">
+                    <div class="gpt3__blog-container_article-image">
+                      <img src="../static/assets/img/blog01.png" alt="blog_image" />
+                    </div>
+                    <div class="gpt3__blog-container_article-content">
+                      <div>
+                        <p>Sep 26, 2021</p>
+                        <h3>فائدة والذكاء الاصطناعي المفتوح هو المستقبل. دعونا نستكشف كيف هو؟</h3>
+                      </div>
+                      <p>قراءة المقال كاملا</p>
+                    </div>
+                </div>                
+              </div>
+              <div class="gpt3__blog-container_groupB">
+                <div class="gpt3__blog-container_article">
+                    <div class="gpt3__blog-container_article-image">
+                      <img src="../static/assets/img/blog02.png" alt="blog_image" />
+                    </div>
+                    <div class="gpt3__blog-container_article-content">
+                      <div>
+                        <p>Sep 26, 2021</p>
+                        <h3>فائدة والذكاء الاصطناعي المفتوح هو المستقبل. دعونا نستكشف كيف هو؟</h3>
+                      </div>
+                      <p>قراءة المقال كاملا</p>
+                    </div>
+                </div>                
+                <div class="gpt3__blog-container_article">
+                    <div class="gpt3__blog-container_article-image">
+                      <img src="../static/assets/img/blog03.png" alt="blog_image" />
+                    </div>
+                    <div class="gpt3__blog-container_article-content">
+                      <div>
+                        <p>Sep 26, 2021</p>
+                        <h3>فائدة والذكاء الاصطناعي المفتوح هو المستقبل. دعونا نستكشف كيف هو؟</h3>
+                      </div>
+                      <p>قراءة المقال كاملا</p>
+                    </div>
+                </div>                
+                <div class="gpt3__blog-container_article">
+                    <div class="gpt3__blog-container_article-image">
+                      <img src="../static/assets/img/blog04.png" alt="blog_image" />
+                    </div>
+                    <div class="gpt3__blog-container_article-content">
+                      <div>
+                        <p>Sep 26, 2021</p>
+                        <h3>فائدة والذكاء الاصطناعي المفتوح هو المستقبل. دعونا نستكشف كيف هو؟</h3>
+                      </div>
+                      <p>قراءة المقال كاملا</p>
+                    </div>
+                </div>                
+                <div class="gpt3__blog-container_article">
+                    <div class="gpt3__blog-container_article-image">
+                      <img src="../static/assets/img/blog05.png" alt="blog_image" />
+                    </div>
+                    <div class="gpt3__blog-container_article-content">
+                      <div>
+                        <p>Sep 26, 2021</p>
+                        <h3>فائدة والذكاء الاصطناعي المفتوح هو المستقبل. دعونا نستكشف كيف هو؟</h3>
+                      </div>
+                      <p>قراءة المقال كاملا</p>
+                    </div>
+                </div>                
+              </div>
+            </div>
+          </div>   
+    </section>
+    
+    {% include "contact.html" %}
+
+    {% block nav %}
+    {% endblock %}
+    <br>
+    <!-- Footer -->
+    <footer>
+        <div class="gpt3__footer section__padding">
+            <div class="gpt3__footer-heading">
+              <h1 class="gradient__text">هل تريد أن تخطو إلى المستقبل قبل الآخرين؟</h1>
+            </div>
+        
+            <div class="gpt3__footer-btn">
+              <p>طلب الوصول المبكر</p>
+            </div>
+        
+            <div class="gpt3__footer-links">
+              <div class="gpt3__footer-links_logo">
+                <a href="/">فائدة</a>
+                <p>مرحبًا بك في المحور المتقدم لتوظيف الكفاءات وبناء مستقبل مهني مشرق، حيث نقدم لك منصة توظيف شاملة تهدف إلى إحداث تحول في رحلتك المهنية. نحن هنا لنساعدك في اكتشاف فرص العمل الواعدة وتطوير مهاراتك بمجموعة متنوعة من المجالات.</p>
+              </div>
+              <div class="gpt3__footer-links_div">
+                <h4>روابط</h4>
+                <p>المبالغة</p>
+                <p>وسائل التواصل الاجتماعي</p>
+                <p>عدادات</p>
+                <p>اتصال</p>
+              </div>
+              <div class="gpt3__footer-links_div">
+                <h4>شركة</h4>
+                <p>البنود و الظروف </p>
+                <p>سياسة الخصوصية</p>
+                <p>اتصال</p>
+              </div>
+              <div class="gpt3__footer-links_div">
+                <h4>ابقى على تواصل</h4>
+                <p>6 October, 247</p>
+                <p>+20 112 595 7364</p>
+                <p>info@fayiduh.net</p>
+              </div>
+            </div>
+        
+            <div class="gpt3__footer-copyright">
+              <p> جميع الحقوق محفوظة لدي @ فائدة </p>
+            </div>
+          </div>        
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../static/assets/js/script.js"></script>
+
+</body>
+
+</html>
+{%endblock%}

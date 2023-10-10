@@ -1,0 +1,31 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/show_companies.css">
+    <title>Company Cards</title>
+</head>
+<body>
+
+    <div class="company-cards">
+        {% for company in companies %}
+            <a href="/company/{{ company.id }}">
+                <div class="company-card">
+                    <img src="{{ url_for('static', filename='uploads/company/logo/' + company.Company_Logo) }}" height="150"  alt="{{ company.company_name }} Logo">
+                    <h2>{{ company.company_name }}</h2>
+                    <p>{{ company.Company_Description }}</p>
+                    <p>Contact Information: {{ company.Contact_Information }}</p>
+                    <p>Number of offered jobs : {{company.number_of_jobs_offered}}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
+{%endblock%}
+

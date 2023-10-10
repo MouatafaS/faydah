@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Applicants</title>
+</head>
+<body>
+    <h1>Applicants for {{ job.title }}</h1>
+    <ul>
+        {% for applicant in applicants %}
+            <li>
+                <strong>Full Name:</strong> {{ applicant.fullname }}<br>
+                <strong>Email:</strong> {{ applicant.email }}<br>
+                <strong>CV:</strong> <a href="{{ url_for('company.download_cv', cv_filename=applicant.cv) }}" download>Download CV</a><br>
+                <strong>Status :</strong> {{ Customers.get_job_status_by_customer_id(applicant.id, job.id) }}
+                &nbsp; <a href="/update_status/{{ applicant.id }}/{{jobid}}">(update)</a>
+                <br> 
+                <!-- Assuming 'job.id' contains the ID of the current job -->
+                <!-- Add other applicant information as needed -->
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>

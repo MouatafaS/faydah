@@ -1,0 +1,21 @@
+<!-- apply_job.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Job</title>
+</head>
+<body>
+    <h1>Apply for Job</h1>
+    <h2>{{ job.title }}</h2>
+    <p>Town: {{ job.town }}</p>
+    <p>Description: {{ job.discription }}</p>
+
+    <form action="/applyjob" method="POST">
+        <input type="hidden" name="jobId" value="{{ job.id }}">
+        <input type="hidden" name="title" value="{{ job.title }}">
+        <input type="hidden" name="town" value="{{ job.town }}">
+        <input type="hidden" name="discription" value="{{ job.discription }}">
+        <button type="submit">Apply Now</button>
+    </form>
+</body>
+</html>

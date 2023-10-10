@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Profile Editing - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Profile Image Column (Single Column) -->
+            <div class="col-md-12 bg-primary p-4">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <form action="/edit_my_profile" method="post" enctype="multipart/form-data">
+                        <!-- Profile Image -->
+                        <div class="mb-4">
+                            {% if user.image is defined and user.image is not none %}
+                                <img src="{{ url_for('static', filename='uploads/customers/images/' + user.image) }}" alt="Profile Image" class="rounded-circle profile-image" width="150">
+                                
+                                <br><a href="{{ url_for('static', filename='uploads/customers/images/' + user.image) }}"style='color:White;' download>Download Image</a>
+                                <br>
+                                {% else %}
+                                <img src="{{ url_for('static', filename='images/owners/avatr.jpg') }}" alt="Profile Image" class="rounded-circle profile-image" width="150">
+                            {% endif %}
+                            <!-- Update Profile Image -->
+                            <label for="new_image" class="text-white mt-2">Change Profile Image:</label>
+                            <input type="file" name="new_image" id="new_image" accept="image/*" value="{{ user.image }}">
+                        </div>
+
+                        <!-- User Information Fields (Left Column) -->
+                        <div class="mt-3">
+                            fullname:<input type="text" placeholder="Full Name" name="new_fullname" value="{{ user.fullname }}" class="form-control mb-2">
+                            birth_date:<input type="date" placeholder="Birthdate" name="new_birthdate" value="{{ user.birthdate }}" class="form-control mb-2">
+                            email:<input type="text" placeholder="Email" name="new_email" value="{{ user.email }}" class="form-control mb-2">
+                            mobile:<input type="text" placeholder="Mobile" name="new_mobile" value="{{ user.mobile }}" class="form-control mb-2">
+                            kind:<select name="new_kind"  >
+                                <option value="male">ذكر</option>
+                                <option value="felame">أنثى</option>
+                            </select>
+                            
+                            currentjob:<input type="text" placeholder="Current Job" name="new_currentjob" value="{{ user.currentjob }}" class="form-control mb-2">
+                            
+                            
+                            <label for="new_cv" class="text-white mt-2">Change your CV:</label>
+                            <input type="file" name="new_cv" id="new_cv" accept=".pdf" value="{{ user.cv }}">
+                            {% if user.cv %}
+                            <br><a href="{{ url_for('static', filename='uploads/customers/cv/' + user.cv) }}" style='color:White;' download>Download cv</a>
+                        {% endif %}
+                        
+
+                            <br>
+
+                            password:<input type="password" placeholder="Password" name="new_password" value="{{ user.password }}" class="form-control mb-2">
+                        </div>
+
+                        <!-- User Information Fields (Right Column) -->
+                        <div class="mt-3">
+                            adress_type:<input type="text" placeholder="Address Type" name="new_adress_type" value="{{ user.adress_type }}" class="form-control mb-2">
+                            country:<input type="text" placeholder="Country" name="new_country" value="{{ user.country }}" class="form-control mb-2">
+                            governorate:<input type="text" placeholder="Governorate" name="new_governorate" value="{{ user.governorate }}" class="form-control mb-2">
+                            adress: <input type="text" placeholder="Address" name="new_adress" value="{{ user.adress }}" class="form-control mb-2">
+                            home_num:<input type="text" placeholder="Home Number" name="new_home_num" value="{{ user.home_num }}" class="form-control mb-2">
+                            department_num: <input type="text" placeholder="Department Number" name="new_department_num" value="{{ user.department_num }}" class="form-control mb-2">
+                        </div>
+
+                        <!-- Save Changes Button (Right Column) -->
+                        <button class="btn btn-primary btn-block mt-4" type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container-fluid {
+            min-height: 100vh;
+        }
+
+        .bg-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .bg-light {
+            background-color: #fff;
+            min-height: 100vh;
+        }
+
+        .profile-image {
+            border: 3px solid #fff; /* White border around the profile image */
+        }
+
+        /* Style for the form fields */
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        /* Add your CSS styles here */
+    </style>
+    <p>"{{ url_for('static', filename='uploads/customers/images/' + user.image) }}"</p>
+</body>
+</html>

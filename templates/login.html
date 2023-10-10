@@ -1,0 +1,76 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+    <html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fayiduh Login </title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../static/login/assets/css/login.css">
+                
+        <!-- Boxicons CSS -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+                        
+    </head>
+    <body>
+        <section class="container forms">
+            <div class="form login">
+                <div class="form-content">
+                    <header>تسجيل الدخول</header>
+                    <br>
+                    {% for message in get_flashed_messages() %}
+
+                    <div style="background-color: red;" role="alert" id="flash-message">
+                      {{ message }}
+                    </div>
+                    
+                    <script>
+                      setTimeout(function() {
+                        var flashMessage = document.getElementById('flash-message');
+                        flashMessage.parentNode.removeChild(flashMessage);
+                      }, 5000); // 5000 milliseconds = 5 seconds
+                    </script>
+                    
+                    {% endfor %}
+
+
+
+                    <form action="/login" method="post">
+                        <div class="field input-field">
+                            <input type="text" name="email" placeholder="اسم المستخدم " class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" name="password" placeholder="كلمة المرور" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="form-link">
+                            <a href="/forgot_password" class="forgot-pass">هل نسيت كلمة السر</a>
+                        </div>
+
+                        <div class="field button-field">
+                            <button value="submit" style="color: #fff;">تسجيل الدخول</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>ليس لديك حساب? <a href="/reg_options" class=" signup-link">اشتراك</a></span>
+                    </div>
+                </div>
+
+
+                
+
+            </div>
+
+            <!-- Signup Form -->
+        </section>
+
+    </body>
+</html>
+{%endblock%}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h1 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.job-applications ul {
+    list-style: none;
+    padding: 0;
+}
+
+.job-applications ul li {
+    margin-bottom: 10px;
+}
+
+</style></head>
+<body>
+    <div class="sidebar">
+        <h1>My Profile</h1>
+        <ul>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Job Applications</a></li>
+            <!-- Add more sidebar links as needed -->
+        </ul>
+    </div>
+    <div class="content">
+        <h2>Welcome, {{ user.username }}</h2>
+        <div class="profile-info">
+            <h3>Profile Information</h3>
+            <p>Name: {{ user.name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <!-- Add more user profile information here -->
+        </div>
+        <div class="job-applications">
+            <h3>Job Applications</h3>
+            <ul>
+                {% for application in user.applications %}
+                    <li>{{ application.job_title }} - {{ application.status }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

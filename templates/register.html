@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../static/login/assets/css/style.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <style>
+        .input-with-x {
+            position: relative;
+        }
+    
+        .input-with-x input {
+            padding-right: 25px; /* Add space for the "X" button */
+        }
+    
+        .input-with-x .remove-button {
+            position: absolute;
+            right: 5px; /* Adjust the button's position as needed */
+            top: 5px; /* Adjust the button's position as needed */
+            cursor: pointer;
+            color: red;
+        }
+    
+        .input-with-check {
+            position: relative;
+        }
+    
+        .input-with-check input {
+            padding-right: 25px; /* Add space for the checkmark */
+        }
+    
+        .input-with-check .checkmark {
+            position: absolute;
+            left: 5px; /* Adjust the checkmark's position as needed */
+            top: 5px; /* Adjust the checkmark's position as needed */
+            color: green;
+            visibility: hidden;
+        }
+    </style>
+   <title>Fayiduh Signup </title>
+</head>
+<body>
+    <div class="container">
+        <header>تسجيل</header>
+
+        <form action="register" method="post" enctype="multipart/form-data">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">تفاصيل شخصية</span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label> الصورة الشخصية</label>
+                            <input placeholder="upload image" name="p-image"  type="file" accept="image/*" >
+                        </div>
+                         <div class="input-field">
+                            <label>السيرة الذاتية </label>
+                            <input placeholder="upload cv" name="p-cv" type="file"accept=".pdf">
+                        </div>                        
+                        <div class="input-field">
+                            <label> كلمة المرور</label>
+                            <input type="password" placeholder="أدخل كلمة المرور" name="password" >
+                       
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            <label>الاسم الكامل</label>
+                            <input type="text" placeholder="أدخل أسمك" name="f_name" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>تاريخ الميلاد</label>
+                            <input type="date" placeholder="أدخل تاريخ الميلاد" name="birth_date">
+                        </div>
+
+                        <div class="input-field">
+                            <label>بريد إلكتروني</label>
+                            <input type="text"name="email" placeholder="أدخل بريدك الإلكتروني" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>رقم الهاتف المحمول</label>
+                            <input type="text"name = "mobile" placeholder="أدخل رقم الجوال" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>جنس</label>
+                            <select name="kind" >
+                                <option   >حدد نوع الجنس</option>
+                                <option value="male">ذكر</option>
+                                <option value="female">أنثى</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>المهنة الحالية</label>
+                            <input type="text" placeholder="أدخل مهنتك" name="current_job">
+                        </div>
+
+                        <div class="input-field">
+                            <label>سيرتك الذاتية (Resume)</label>
+                            <textarea placeholder="أدخل سيرتك الذاتية" name="resume"></textarea>
+                        </div>
+
+
+
+
+                        
+                        <div class="input-field">
+                            <label>المهارات</label>
+                            <div id="skills-container">
+                                <select id="skill-select" name="skills[]">
+                                    <option value="" disabled selected>اختر مهارة</option>
+                                    <!-- Include options for existing skills from your database here -->
+                                    {% for skill in skills %}
+                                    <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+                                    {% endfor %}
+                                    <option value="add_new_skill">إضافة مهارة جديدة</option>
+                                </select>
+                                <!-- Display selected skills here -->
+                                <div id="selected-skills"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <button class="nextBtn">
+                    <span class="btnText">التالي</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">تفاصيل العنوان</span>
+                    <br>
+                    <br>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>نوع العنوان</label>
+                            <input type="text" placeholder="دائمة أو مؤقتة" name="home_type">
+                        </div>
+
+                        <div class="input-field">
+                            <label>الدولة</label>
+                            <input type="text" placeholder="أدخل الدولة"name="country" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>المحافظة</label>
+                            <input type="text" placeholder="أدخل محافظتك" name="government">
+                        </div>
+
+                        <div class="input-field">
+                            <label>العنوان</label>
+                            <input type="text" placeholder="أدخل عنوانك " name="address">
+                        </div>
+
+                        <div class="input-field">
+                            <label>رقم العقار </label>
+                            <input type="text" placeholder="أدخل رقم العقار" name="home_num" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>رقم الشقه</label>
+                            <input type="text" placeholder="أدخل رقم الشقه" name="department_num">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details family">
+                    
+
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">خلف</span>
+                        </div>
+                        
+                        <button class="sumbit">
+                            <span class="btnText">يُقدِّم</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            
+        </form>
+    </div>
+
+    <script src="../static/login/assets/js/script.js"></script>
+        <!-- Add JavaScript for adding skills dynamically -->
+        
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const skillSelect = document.getElementById('skill-select');
+            const selectedSkillsContainer = document.getElementById('selected-skills');
+    
+            skillSelect.addEventListener('change', function () {
+                const selectedOption = skillSelect.options[skillSelect.selectedIndex];
+                const selectedSkillValue = selectedOption.value;
+    
+                if (selectedSkillValue === "add_new_skill") {
+                    // Create a new input field for adding a skill
+                    const newSkillInput = document.createElement('div');
+                    newSkillInput.classList.add('input-with-x');
+    
+                    // Create an input field for the skill
+                    const skillInput = document.createElement('input');
+                    skillInput.type = 'text';
+                    skillInput.placeholder = 'أدخل مهارة واحدة';
+                    skillInput.name = 'skills[]';
+    
+                    // Create an "X" button to remove the input
+                    const removeButton = document.createElement('div');
+                    removeButton.classList.add('remove-button');
+                    removeButton.textContent = 'X';
+                    removeButton.addEventListener('click', function () {
+                        selectedSkillsContainer.removeChild(newSkillInput);
+                    });
+    
+                    newSkillInput.appendChild(skillInput);
+                    newSkillInput.appendChild(removeButton);
+                    selectedSkillsContainer.appendChild(newSkillInput);
+    
+                    // Reset the select element to the default option
+                    skillSelect.selectedIndex = 0;
+                } else {
+                    // Create an input field for the selected skill
+                    const selectedSkillInput = document.createElement('input');
+                    selectedSkillInput.type = 'text';
+                    selectedSkillInput.value = selectedSkillValue;
+                    selectedSkillInput.readOnly = true; // Disable editing
+                    selectedSkillsContainer.appendChild(selectedSkillInput);
+    
+                    // Reset the select element to the default option
+                    skillSelect.selectedIndex = 0;
+                }
+            });
+        });
+    </script>
+        
+</body>
+</html>

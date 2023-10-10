@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Applicant Status</title>
+</head>
+<body>
+    <h1>Applicant Details</h1>
+    <p>Name: {{ applicant.fullname }}</p>
+    <p>Email: {{ applicant.email }}</p>
+    <!-- Display other applicant details as needed -->
+    
+    <h2>Update Status</h2>
+    <form method="post" action="/update_status/{{ applicant.id }}/{{job_id}}">
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" value="{{ applicant.status }}">
+        <!-- Add other form fields as needed -->
+        <button type="submit">Update Status</button>
+    </form>
+</body>
+</html>

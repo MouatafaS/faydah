@@ -1,0 +1,16 @@
+<!-- templates/search_results.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Search Results:</h2>
+    <ul>
+        {% for job in jobs %}
+            <li>{{ job.title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

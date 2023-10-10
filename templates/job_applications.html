@@ -1,0 +1,97 @@
+{% extends "sidenav.html" %}
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Add additional CSS styles as needed */
+    </style>
+</head>
+<body>
+
+    <h1>Job Applications for {{ customer.fullname }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Town</th>
+                <th>Job Description</th>
+                <th>Job Type</th>
+                <th>Mission</th>
+                <th>Salary</th>
+                <th>Contact Email</th>
+                <th>Requirements</th>
+                <th>Skills</th>
+                <th>Date Posted</th>
+                <th>Expiration Date</th>
+                <th>status</th>
+                <th>note</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in customer.jobs %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.town }}</td>
+                    <td>{{ job.job_description }}</td>
+                    <td>{{ job.job_type }}</td>
+                    <td>{{ job.mission }}</td>
+                    <td>{{ job.salary }}</td>
+                    <td>{{ job.contact_email }}</td>
+                    <td>{{ job.requirements }}</td>
+                    <td>{{ job.skills }}</td>
+                    <td>{{ job.date_posted.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ job.expiration_date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{status}}</td>
+                    <td>{{note}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+<!-- Your job-related content goes here -->
+
+{% endblock %}
